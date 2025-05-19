@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avicena</title>
+    <link rel="stylesheet" href="css/avicena.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100">
+    <!-- FORM PARA LOS DATOS A ENVIAR -->
+    <div class="p-5 bf-light border runded text-center">
+        <h2>Datos Para Consulta Avicena</h2>
+        <form class="p-3">
+            <div class="mb-3">
+                <label for="numeroOrden" class="form-label">Número Orden</label>
+                <input type="text" maxlength="15" class="form-control" id="numeroOrden" oninput="validarNumeros(event)">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Código Sucursal</label>
+                <input type="text" class="form-control" id="codigoSucursal" maxlength="4" oninput="validarNumeros(event)"> 
+            </div>
+            <button type="submit" class="btn btn-primary">Consultar</button>
+      </form>
+    </div>
+
+    <!-- MOSTRAR LOS DATOS DE LA API -->
+     <div class="container my-4 p-4 border rounded d-none">
+        <div class="d-flex justify-content-center align-items-center pb-4">
+            <h3>Formulas de Medicamentos - AVICENA</h3>
+        </div>
+        <!-- Datos generales -->
+        <div class="row mb-3">
+            <div class="col-md-3"><strong>Centro de costo:</strong> <span id="centroCosto"></span></div>
+            <div class="col-md-3"><strong>Estado:</strong> <span id="estado"></span></div>
+            <div class="col-md-3"><strong>Fecha:</strong> <span id="fecha"></span></div>
+            <div class="col-md-3"><strong>Código error:</strong> <span id="codigoError"></span></div>
+        </div>
+        <!-- Medico -->
+        <fieldset class="border p-3 mb-4">
+            <legend>Datos del Médico</legend>
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Código Especialidad:</strong><span id="codigoEspecialidadMed"></span></div>
+                <div class="col-md-4"><strong>Número Identificación:</strong><span id="numIdeMed"></span></div>
+                <div class="col-md-4"><strong>Tipo:</strong><span id="tipoIdeMed"></span></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Número Orden:</strong><span id="numOrdenMed"></span></div>
+                <div class="col-md-4"><strong>Orden Reemplazada:</strong><span id="ordenReemplazadaMed"></span></div>
+                <div class="col-md-4"><strong>Procedencia:</strong><span id="procedenciaMed"></span></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Sucursal:</strong><span id="sucursalMed"></span></div>
+                <div class="col-md-4"><strong>Tipo Formulación:</strong><span id="tipoFormulacionMed"></span></div>
+                <div class="col-md-4"><strong>Tipo Médico:</strong><span id="tipoMed"></span></div>
+            </div>
+        </fieldset>
+
+        <!-- Usuario -->
+         <fieldset class="border p-3 mb-4">
+            <legend class="w-auto px-2">Usuario</legend>
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Compañía:</strong><span id="companiaUser"></span></div>
+                <div class="col-md-4"><strong>Familia:</strong><span id="familiaUser"></span></div>
+                <div class="col-md-4"><strong>Número Contrato:</strong><span id="numContratoUser"></span></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Usuario:</strong><span id="user"></span></div>
+                <div class="col-md-4"><strong>Número Identificación</strong><span id="numIdeUser"></span></div>
+                <div class="col-md-4"><strong>Tipo:</strong><span id="tipoIdeUser"></span></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4"><strong>Plan:</strong><span id="planUser"></span></div>
+                <div class="col-md-4"><strong>Telefono:</strong><span id="telefonoUser"></span></div>
+                <div class="col-md-4"><strong>Tipo Usuario:</strong><span id="tipoUser"></span></div>
+            </div>
+         </fieldset>
+         <!-- Medicamentos -->
+          <div class="mb-3">
+            <h5>Medicamentos</h5>
+            <div class="table-responsive border rounded p-3">
+                <table class="table table-bordered table-hover text-center" id="tablaMedicamentos">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Cantidad</th>
+                            <th>Código ATC</th>
+                            <th>Código Barras</th>
+                            <th>Código Sophia</th>
+                            <th>Número Entregas</th>
+                            <th>Prescripción</th>
+                            <th>Unidad de Medida</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaMedicamentos">
+                    </tbody>
+                </table>
+            </div>
+          </div>
+     </div>
+    <script src="js/avicenaIn.js"></script>
+</body>
+</html>

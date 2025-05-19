@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Pacientes</title>
+    <link rel="stylesheet" href="css/validador.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 flex-column">
+    <div class="d-flex flex-column w-100" id="">
+        <div class="p-4 border rounded container bg-white">
+            <div class="text-center mb-3">
+                <h4>Información del Usuario</h4>
+            </div>
+            <div class="container">
+                <div class="row my-2">
+                    <div class="col-2 fw-bold"><p id="nombre" class="nombreUsuario"></p></div>
+                    <div class="col"><span id="codEstAuth"></span></div>
+                    <div class="col-2 fw-bold">Estado:</div>
+                    <div class="col"><span id="estado"></span></div>
+                    <div class="col-2 fw-bold">Correo Electrónico:</div>
+                    <div class="col"><span id="correo"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Compañía:</div>
+                    <div class="col"><span id="productoInfo"></span></div>
+                    <div class="col-2 fw-bold">Tipo Documento:</div>
+                    <div class="col"><span id="tipoDocumento"></span></div>
+                    <div class="col-2 fw-bold">Fecha Nacimiento:</div>
+                    <div class="col"><span id="fechaNacimiento"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Plan:</div>
+                    <div class="col"><span id="planInfo"></span></div>
+                    <div class="col-2 fw-bold">Número Documento:</div>
+                    <div class="col"><span id="numeroDocumento"></span></div>
+                    <div class="col-2 fw-bold">Edad:</div>
+                    <div class="col"><span id="edad"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Contrato:</div>
+                    <div class="col"><span id="contrato"></span></div>
+                    <div class="col-2 fw-bold">Teléfono Principal:</div>
+                    <div class="col"><span id="telefonoPrincipal"></span></div>
+                    <div class="col-2 fw-bold">Sexo:</div>
+                    <div class="col"><span id="sexo"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Familia:</div>
+                    <div class="col"><span id="familia"></span></div>
+                    <div class="col-2 fw-bold">Segundo Teléfono:</div>
+                    <div class="col"><span id="segundoTelefono"></span></div>
+                    <div class="col-2 fw-bold"></div>
+                    <div class="col"><span id=""></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Número de Usuario:</div>
+                    <div class="col"><span id="numUsuario"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 border rounded container bg-white">
+            <div class="text-center mb-3">
+                <h4>Información del Usuario</h4>
+            </div>
+            <div class="container">
+                <div class="row my-2">
+                    <div class="col-3 fw-bold">Documento del Cotizante Titular:</div>
+                    <div class="col"><span id="identificacionCotizante"></span></div>
+                    <div class="col-3 fw-bold">Semanas cotizadas a la SGSSS:</div>
+                    <div class="col"><span id="sgsss"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-3 fw-bold">Tipo de afiliado:</div>
+                    <div class="col"><span id="tipoAfilidado"></span></div>
+                    <div class="col-3 fw-bold">Categoría:</div>
+                    <div class="col"><span id="categoria"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-3  fw-bold"></div>
+                    <div class="col"><span id="desEstAuth"></span></div>
+                    <div class="col-3 fw-bold">Tipo de documento:</div>
+                    <div class="col"><span id="tipoDocumentoContratante"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-3 fw-bold"></div>
+                    <div class="col"><span id="vigencia"></span></div>
+                    <div class="col-3 fw-bold">Motivo del estado del usuario:</div>
+                    <div class="col"><span id="motivoEstado"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Autorizaciones -->
+    <div class="container bg-white" id="divAutorizaciones">
+        <table class="table table-striped" id="tableAuth">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Numero Autorizacion</th>
+                    <th>Consumir</th>
+                </tr>
+            </thead>
+            <tbody id="tableAuthBody">
+
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="js/validador.js"></script>
+</body>
+</html>

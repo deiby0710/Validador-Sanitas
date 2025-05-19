@@ -1,0 +1,1 @@
+export const getAvicenaFormula = async(req)

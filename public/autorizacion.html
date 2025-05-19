@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autorizacion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./css/autorizacion.css">
+</head>
+<body>
+    <div class="container py-4">
+
+
+    <!-- Consultar autorizacion -->
+    <div class="pt-5 pb-4 border border-2 text-center rounded-3 bg-white shadow d-none" id="autorizacionDiv">
+        <h2>Autorización</h2>
+        <form class="p-3">
+            <div class="pb-4">
+                <label for="autorizacion">Número de Autorización:</label>
+                <input type="text" name="autorizacion" id="numeroAutorizacion">
+            </div>
+            <button type="button" class="btn btn-secondary" id="btnConsultaAut">Consultar</button>
+        </form>
+    </div>
+    <!-- Informacion -->
+    <div class="d-flex flex-column w-100" id="informacionAPI">
+        <div class="p-4 border rounded container bg-white">
+            <div class="text-center mb-3">
+                <h4>Informacion sobre la autorizacion</h4>
+            </div>
+            <div class="container">
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Número Autorización:</div>
+                    <div class="col"><span id="numAuth"></span></div>
+                    <div class="col-2 fw-bold">Código Servicio:</div>
+                    <div class="col"><span id="codServicio"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Código estado autorización:</div>
+                    <div class="col"><span id="codEstAuth"></span></div>
+                    <div class="col-2 fw-bold">Descripción Servicio:</div>
+                    <div class="col"><span id="desServicio"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2  fw-bold">Descripción estado autorización:</div>
+                    <div class="col"><span id="desEstAuth"></span></div>
+                    <div class="col-2 fw-bold">Código Tipo Atención:</div>
+                    <div class="col"><span id="codTipoAtencion"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Vigencia:</div>
+                    <div class="col"><span id="vigencia"></span></div>
+                    <div class="col-2 fw-bold">Descripción Tipo Atención:</div>
+                    <div class="col"><span id="desTipoAtencion"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Categoria:</div>
+                    <div class="col"><span id="categoria"></span></div>
+                    <div class="col-2 fw-bold">Consumida:</div>
+                    <div class="col"><span id="authConsumida"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Fecha Notificacion:</div>
+                    <div class="col"><span id="fechNotificacion"></span></div>
+                    <div class="col-2 fw-bold">Renovada:</div>
+                    <div class="col"><span id="authRenovada"></span></div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-2 fw-bold">Fecha Solicitud:</div>
+                    <div class="col"><span id="fechSolicitud"></span></div>
+                    <div class="col-2 fw-bold">Apta:</div>
+                    <div class="col"><span id="authApta"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 mt-2 border rounded container bg-white" id="divOrdenMed">
+            <div class="text-center mb-3">
+                <h4>Datos de orden medica </h4>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col fw-bold">Número Orden Médica:</div>
+                    <div class="col"><span id="numOrdenMed"></span></div>
+                    <div class="col fw-bold">Número Entrega Autorizada:</div>
+                    <div class="col"><span id="numEntregaAuth"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col fw-bold">Fecha Orden Médica:</div>
+                    <div class="col"><span id="fechOrdenMed"></span></div>
+                    <div class="col fw-bold">Total Entregas:</div>
+                    <div class="col"><span id="totalEntregas"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col fw-bold">Código Origen Autorización:</div>
+                    <div class="col"><span id="codOrigenAuth"></span></div>
+                    <div class="col fw-bold">Periodicidad:</div>
+                    <div class="col"><span id="periodicidad"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col fw-bold">Descripción Origen Autorización:</div>
+                    <div class="col"><span id="desOrigenAuth"></span></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container border rounded p-4 mt-2 bg-white d-none">
+            <div class="text-center">
+                <h4>Prestador Remitente</h4>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Tipo Identificación del Prestador Ordenante:</div>
+                <div class="col"><span id="codTipoIdePrestadorOrdenante"></span></div>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Número Identificación del Prestador Ordenante:</div>
+                <div class="col"><span id="numTipoIdePrestadorOrdenante"></span></div>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Código de la Sucursal del Prestador Ordenante:</div>
+                <div class="col"><span id="codSucursalPrestadorOrdenante"></span></div>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Nombre de la sucursal del Prestador Ordenante:</div>
+                <div class="col"><span id="nomSucursalPrestadorOrdenante"></span></div>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Descripción de la Especialidad:</div>
+                <div class="col"><span id="nomLegalEspecialidad"></span></div>
+            </div>
+        </div>
+        
+        <div class="container border rounded p-4 mt-2 bg-white" id="medicamentoContainer">
+            <div class="d-flex justify-content-center align-items-center">
+                <h4>Medicamentos</h4>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Codigo legal medicamento OSI:</div>
+                <div class="col"><span id="codLegMedicamento"></span></div>
+                <div class="col fw-bold">Controlado:</div>
+                <div class="col"><span id="controlado"></span></div>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Nombre medicamento OSI:</div>
+                <div class="col"><span id="nomMed"></span></div>
+                <div class="col fw-bold">Cantidad Dispensada:</div>
+                <div class="col"><span id="cantDispensada"></span></div>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Descripción Forma Farmaceutica:</div>
+                <div class="col"><span id="desFormFarmaceutica"></span></div>
+                <div class="col fw-bold">Tipo Copago: </div>
+                <div class="col"><span id="tipoCopago"></span></div>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Sucursal:</div>
+                <div class="col"><span id="sucursal"></span></div>
+                <div class="col fw-bold">Cobro:</div>
+                <div class="col"><span id="cobro"></span></div>
+            </div>
+            <div class="row">
+                <div class="col fw-bold">Código Producto:</div>
+                <div class="col"><span id="codProducto"></span></div>
+                <div class="col fw-bold"></div>
+                <div class="col"><span id=""></span></div>
+            </div>
+        </div>
+        <div id="medicamentosContainer" class="container mt-4"></div>
+        <div class="d-flex justify-content-center align-items-center mt-3">
+            <button class="btn btn-dark" id="btnConsumir">Consumir</button>
+        </div>
+    </div>
+     <script src="js/autorizacion.js"></script>
+
+
+     </div>
+</body>
+</html>
