@@ -101,16 +101,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             const controlado = autorizacion.medicationRequest[0].checked
             const cantDispensada = autorizacion.medicationRequest[0].medicationDispense.quantity
             
-            // const cobro = autorizacion.costToBeneficiary.valueMoney
-            const cobro = dataCopago?.entry?.[0]?.resource?.costToBeneficiary?.[0]?.valueMoney?.value ?? '';
-            // const cobro = dataCopago.entry[0].resource.costToBeneficiary[0].extension[0].valueDecimal
             const tipoCopago = autorizacion.costToBeneficiary.type
             const codProducto = autorizacion.insurance.coverage.insurancePlan.identifier[0].value
 
-            // let cobro = dataCopago?.entry?.[0]?.resource?.costToBeneficiary?.[0]?.valueMoney?.value ?? '';
-            // let texto = dataCopago?.entry?.[0]?.resource?.costToBeneficiary?.[0]?.exception?.[0]?.type?.text ?? '';
+            let cobro = dataCopago?.entry?.[0]?.resource?.costToBeneficiary?.[0]?.valueMoney?.value ?? '';
+            let texto = dataCopago?.entry?.[0]?.resource?.costToBeneficiary?.[0]?.exception?.[0]?.type?.text ?? '';
+            if (cobro == 0 && texto == 'Primera vez') {
+                cobro = data?.authorization?.[0]?.costToBeneficiary?.copayPercentage ?? "";
+            }
             // if (cobro == 0 && texto == 'Sin cobro de cuota moderadora') {
-            //     console.log('Le asignamos el nuevo valor')
+            // Mensaje que dio Sanitas.
             // }
             document.getElementById("codLegMedicamento").textContent = codLegMedicamento; 
             document.getElementById("nomMed").textContent = nomMed;
